@@ -1,5 +1,6 @@
 import { FormState } from '@/zod/schema'
 import React from 'react'
+import styles from './styles.module.css'
 
 type FieldErrorPros = {
   formState: FormState | undefined;
@@ -11,7 +12,7 @@ export default function FieldError({
   name
 }: FieldErrorPros) {
   return (
-    <strong style={{display: 'block'}}>
+    <strong className={styles.errorMessage}>
       {formState?.fieldErrors[name]?.[0]}
     </strong>
   )

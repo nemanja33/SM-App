@@ -1,7 +1,9 @@
-import React from 'react'
+import SignInForm from "@/components/Forms/SignInForm/SignInForm";
 
-export default function SignIn() {
+export default function SignUp() {
   return (
-    <div>SignIn</div>
+    <div>
+      <SignInForm />
+    </div>
   )
 }

@@ -1,0 +1,82 @@
+.header {
+  position: sticky;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background-color: #1da1f2;
+  color: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: white;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.logo:hover {
+  opacity: 0.6;
+}
+
+.nav {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.authLink {
+  color: white;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  border: 1px solid white;
+  border-radius: 20px;
+  transition: all 0.3s ease;
+}
+
+.authLink:hover {
+  background-color: white;
+  color: #1da1f2;
+}
+
+.signInLink {
+  background-color: transparent;
+}
+
+.signUpLink {
+  background-color: white;
+  color: #1da1f2;
+}
+
+.signUpLink:hover {
+  background-color: rgba(255, 255, 255, 0.9);
+}
+
+.userInfo {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.username {
+  font-weight: 600;
+  color: white;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  transition: all 0.3s ease;
+  font-size: 0.95rem;
+  letter-spacing: 0.3px;
+}
+
+.username:hover {
+  opacity: 0.6
+}
+
+.username:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.3);
+}

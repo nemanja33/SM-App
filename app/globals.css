@@ -2,6 +2,8 @@
 *::before,
 *::after {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 html {
@@ -18,11 +20,6 @@ figure, blockquote, dl, dd {
 ul[role='list'],
 ol[role='list'] {
   list-style: none;
-}
-
-body {
-  min-height: 100vh;
-  line-height: 1.5;
 }
 
 h1, h2, h3, h4,
@@ -59,4 +56,3 @@ textarea:not([rows]) {
 :target {
   scroll-margin-block: 5ex;
 }
-
