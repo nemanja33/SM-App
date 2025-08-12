@@ -1,7 +1,7 @@
 "use server"
 
 import { FormState, SignInpSchema, SignUpFormSchema, SignUpSchema } from "@/zod/schema";
-import { GetUser } from "@/lib";
+import { CreateUser, SignInUser } from "@/lib/db";
 import { redirect } from 'next/navigation'
 import { getIronSessionData } from "@/session/session";
 import { ErrorMessage, SuccessMessage } from "./messages";
@@ -17,8 +17,12 @@ export async function ActionSignUp(state: SignUpFormSchema, formData: FormData):
   if (!validatedData?.success) {
     return ErrorMessage(validatedData.error)
   }
+  // nesto ne radi kako treba sa test emailovima
 
-  return SuccessMessage('SUCCESS', 'User created!')
+  CreateUser(validatedData.data)
+  
+  // return SuccessMessage('SUCCESS', 'User created!')
+  redirect('/sign-in')
 }
 
 
@@ -33,13 +37,16 @@ export async function ActionSignIn(state: SignUpFormSchema, formData: FormData):
   }
 
   const { data } = validatedData;
-  const user = await GetUser(data);
+  const user = await SignInUser(data);
   if (!user) {
     return ErrorMessage("PASSWORD")
   }
 
+
+  // return SuccessMessage('SUCCESS', 'Signed in!')
+
   const session = await getIronSessionData();
-  session.username = user.userName;
+  session.username = user.userName!;
   session.isLoggedIn = true;
   await session.save();
   
