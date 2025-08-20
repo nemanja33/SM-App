@@ -1,5 +1,5 @@
-import prisma from "./prisma";
-import { Prisma } from "./generated/prisma-client";
+import prisma from "../prisma"
+import { Prisma } from "../generated/prisma-client";
 import { cache } from "react";
 
 type User = {
@@ -43,12 +43,3 @@ export const GetUser = cache(async function GetUser(userName: string) {
 
     return user
 })
-
-export async function GetPosts(amount: number = 2) {
-    const posts = await prisma.post.findMany({
-        orderBy: { createdAt: 'desc' },
-        take: amount
-    });
-
-    return posts
-}

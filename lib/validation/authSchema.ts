@@ -42,9 +42,3 @@ export type SignUpFormSchema = {
   }
   message?: string
 } | undefined
-
-export type FormState = {
-  status: 'UNSET' | 'SUCCESS' | 'ERROR';
-  message: string;
-  fieldErrors: Record<string, string[] | undefined>;
-};

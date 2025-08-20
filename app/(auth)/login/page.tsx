@@ -1,6 +1,6 @@
-import FormLoading from "@/components/Forms/FormLoading/FormLoading";
-import SignInForm from "@/components/Forms/SignInForm/SignInForm";
+import FormLoading from "@/components/forms/formLoading/formLoading";
 import { Suspense } from "react";
+import SignInForm from "./form";
 
 export default function SignUp() {
   return (

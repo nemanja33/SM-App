@@ -1,10 +1,10 @@
-import { GetUser } from "@/lib/db";
-import { getIronSessionData } from "@/session/session";
+import { GetUser } from "@/lib/repositories/userRepo";
+import { getIronSessionData } from "@/lib/auth/session";
 import { notFound } from 'next/navigation'
 
 type UserPage = {
   params: Promise<{
-    slug: string
+    username: string
   }>
 }
 
@@ -16,9 +16,9 @@ type Post = {
 export default async function UserPage({
   params
 }: UserPage) {
-  const { slug } = await params
+  const { username } = await params
   const session = await getIronSessionData();
-  const user = await GetUser(slug);
+  const user = await GetUser(username);
 
   if (!user) {
     notFound()

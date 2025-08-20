@@ -1,4 +1,4 @@
-import { ActionSignOut } from "@/app/(authentication)/_actions/formActions";
+import { ActionSignOut } from './actions';
 import styles from './styles.module.css';
 
 export default function SignOut() {

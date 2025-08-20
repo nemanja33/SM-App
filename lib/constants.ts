@@ -1,7 +1,11 @@
-import { FormState } from "@/zod/schema";
 import { ZodError } from "zod";
 
-// add toast messages
+type FormState = {
+  status: 'UNSET' | 'SUCCESS' | 'ERROR';
+  message: string;
+  fieldErrors: Record<string, string[] | undefined>;
+};
+
 
 export function SuccessMessage(status: FormState['status'], message: string): FormState {
   return {

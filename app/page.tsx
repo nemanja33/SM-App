@@ -1,6 +1,6 @@
-import { GetPosts } from "@/lib/db";
 import { Post } from "@/lib/generated/prisma-client";
-import { getIronSessionData } from "@/session/session";
+import { GetPosts } from "@/lib/repositories/postRepo";
+import { getIronSessionData } from "@/lib/auth/session";
 
 export default async function Home() {
   const session = await getIronSessionData();
