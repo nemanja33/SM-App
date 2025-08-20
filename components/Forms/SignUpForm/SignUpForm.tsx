@@ -31,7 +31,7 @@ export default function SignUpForm() {
           <InputField label="Password" type="password" placeholder="Password" />
           <FieldError formState={state} name="password" />
         </div>
-        <GenericButton label="Sign In" loading="Signing in..." disabled={pending} />
+        <GenericButton label="Sign Up" loading="Signing up..." disabled={pending} />
         <p>{state?.message}</p>
       </form>
     </div>

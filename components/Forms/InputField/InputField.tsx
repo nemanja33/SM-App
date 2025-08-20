@@ -1,4 +1,6 @@
-import React from 'react'
+"use client";
+
+import React, { useState } from 'react'
 import styles from './styles.module.css'
 
 type InputFieldProps = {
@@ -15,6 +17,13 @@ export default function InputField({
   hasError = false
 }: InputFieldProps) {
   const id = label.toLowerCase().replaceAll(" ", '-');
+  const [value, setValue] = useState('');
+ 
+  function handleChange(event: React.ChangeEvent<HTMLInputElement>): void {
+    const newValue = event.target.value;
+
+    setValue(newValue);
+  }
 
   return (
     <div className={styles.fieldContainer}>
@@ -25,6 +34,8 @@ export default function InputField({
         id={id}
         placeholder={placeholder}
         className={`${styles.input} ${hasError ? styles.error : ''}`}
+        value={value}
+        onChange={handleChange}
       />
     </div>
   )
