@@ -1,6 +1,6 @@
-import { FormState } from '@/zod/schema'
 import React from 'react'
 import styles from './styles.module.css'
+import { FormState } from '@/lib/constants';
 
 type FieldErrorPros = {
   formState: FormState | undefined;

@@ -6,9 +6,10 @@
   justify-content: space-between;
   align-items: center;
   padding: 1rem 2rem;
-  background-color: #1da1f2;
+  background: #181c20;
   color: white;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  height: 70px;
 }
 
 .logo {

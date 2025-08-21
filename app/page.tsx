@@ -1,29 +1,27 @@
-import { Post } from "@/lib/generated/prisma-client";
 import { GetPosts } from "@/lib/repositories/postRepo";
 import { getIronSessionData } from "@/lib/auth/session";
+import Post from "@/components/ui/post/post";
+import CreatePost from "@/components/forms/createPost/createPost";
 
 export default async function Home() {
   const session = await getIronSessionData();
 
-  const latestPosts = await GetPosts();
+  const latestPosts = await GetPosts(4);
   
   return (
-    <>
+    <div className="wrap">
       {session.isLoggedIn ? (
         <>
-          <p>Welcome back, {session.username}!</p>
+          <CreatePost />
           {
-            latestPosts.map(({ title, content }: Post) => (
-              <article key={title.toLowerCase().replaceAll(" ", "-")}>
-                <h2>{title}</h2>
-                <p>{content}</p>
-              </article>
+            latestPosts.map(({ title, content, author }) => (
+              <Post key={title} content={content} username={author.userName} />
             ))
           }
         </>
       ) : (
         <p>Please sign in</p>
       )}
-    </>
+    </div>
   );
 }

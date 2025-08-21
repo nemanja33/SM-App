@@ -1,10 +1,9 @@
 "use server"
 
-import { FormState, SignUpFormSchema } from "@/zod/schema";
 import { redirect } from 'next/navigation'
-import { ErrorMessage } from "@/lib/constants";
+import { ErrorMessage, FormState } from "@/lib/constants";
 import { CreateUser } from "@/lib/repositories/userRepo";
-import { SignUpSchema } from "@/lib/validation/authSchema";
+import { SignUpFormSchema, SignUpSchema } from "@/lib/validation/authSchema";
 
 
 export async function ActionSignUp(state: SignUpFormSchema, formData: FormData): Promise<FormState> {
@@ -19,7 +18,7 @@ export async function ActionSignUp(state: SignUpFormSchema, formData: FormData):
   }
   // nesto ne radi kako treba sa test emailovima
 
-  CreateUser(validatedData.data)
+  await CreateUser(validatedData.data)
   
   // return SuccessMessage('SUCCESS', 'User created!')
   redirect('/sign-in')

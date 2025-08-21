@@ -56,3 +56,20 @@ textarea:not([rows]) {
 :target {
   scroll-margin-block: 5ex;
 }
+
+.wrap {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 1rem 0;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  border: 0;
+}

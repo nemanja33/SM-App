@@ -1,11 +1,11 @@
 "use client"
 
-import { ActionSignUp } from "@/app/(auth)/actions";
 import { useActionState } from "react";
-import { FormState } from "@/zod/schema";
 import GenericButton from "@/components/ui/button/button";
 import InputField from "@/components/forms/input/input";
 import FieldError from "@/components/forms/fieldError/fieldError";
+import { FormState } from "@/lib/constants";
+import { ActionSignUp } from "./actions";
 
 const EMPTY_FORM_STATE: FormState = {
   status: 'UNSET' as const,

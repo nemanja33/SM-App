@@ -1,6 +1,9 @@
 import { GetUser } from "@/lib/repositories/userRepo";
 import { getIronSessionData } from "@/lib/auth/session";
 import { notFound } from 'next/navigation'
+import Post from "@/components/ui/post/post";
+import CreatePost from "@/components/forms/createPost/createPost";
+import styles from './styles.module.css'
 
 type UserPage = {
   params: Promise<{
@@ -27,28 +30,17 @@ export default async function UserPage({
   const isUserPage = session.username === user?.userName;
   const posts = user ? user.posts : [];
 
-
-// kada budes pravio da dodaje ili edituje post proveri i tamo da li je to taj user za svaki slucaj
-
   return (
-    <div>
-      <h1>{user?.userName}</h1>
+    <div className="wrap">
+      <h1 className={styles.username}>{user?.userName}</h1>
       {
         isUserPage && (
-          <div>
-            <form>
-              <label htmlFor="new-post">Create a new post</label>
-              <textarea name="new-post" id="new-post"></textarea>
-            </form>
-          </div>
+          <CreatePost />
         )
       }
       {
         posts.map(({ title, content }: Post) => (
-          <article key={title.toLowerCase().replaceAll(" ", "-")}>
-            <h2>{title}</h2>
-            <p>{content}</p>
-          </article>
+          <Post key={title} content={content} username={user?.userName} />
         ))
       }
     </div>

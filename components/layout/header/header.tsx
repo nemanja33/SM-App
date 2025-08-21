@@ -1,7 +1,7 @@
 import { getIronSessionData } from "@/lib/auth/session"
 import Link from "next/link";
 import styles from "./styles.module.css";
-import SignOut from "@/components/forms/signOut/SignOut";
+import SignOut from "@/components/forms/signOut/signOut";
 
 export default async function Header() {
   const session = await getIronSessionData();
@@ -17,7 +17,7 @@ export default async function Header() {
           session.isLoggedIn ? (
 
             <div className={styles.userInfo}>
-              <Link className={styles.username} href={session.username.toLowerCase().replaceAll(' ', '')}>@{session.username}</Link>
+              <Link className={styles.username} href={`/profile/${session.username.toLowerCase().replaceAll(' ', '')}`}>@{session.username}</Link>
               <SignOut />
             </div>
           ) : (

@@ -1,11 +1,10 @@
 "use server"
 
-import { FormState, SignUpFormSchema } from "@/zod/schema";
 import { redirect } from 'next/navigation'
 import { getIronSessionData } from "@/lib/auth/session";
-import { ErrorMessage } from "@/lib/constants";
+import { ErrorMessage, FormState } from "@/lib/constants";
 import { SignInUser } from "@/lib/repositories/userRepo";
-import { SignInpSchema } from "@/lib/validation/authSchema";
+import { SignInpSchema, SignUpFormSchema } from "@/lib/validation/authSchema";
 
 
 export async function ActionSignIn(state: SignUpFormSchema, formData: FormData): Promise<FormState> {
