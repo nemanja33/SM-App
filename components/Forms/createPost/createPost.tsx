@@ -13,13 +13,17 @@ const EMPTY_FORM_STATE: FormState = {
   message: '',
   fieldErrors: {},
 };
-// kada budes pravio da dodaje ili edituje post proveri i tamo da li je to taj user za svaki slucaj
 
-export default function CreatePost() {
+export default function CreatePost({
+  userName
+}: {
+  userName: string
+}) {
   const [ state, action, pending ] = useActionState(ActionCreatePost, EMPTY_FORM_STATE)
 
   return (
     <form className={styles.form} action={action}>
+      <input type="hidden" name="username" value={userName} />
       <InputField label="post" type="textarea" placeholder="Type something..." />
       <FieldError formState={state} name="post" />
       <GenericButton label='Submit' disabled={pending} loading='Loading...' />

@@ -1,13 +1,17 @@
 "use server"
 
 import { getIronSessionData } from "@/lib/auth/session";
-import { ErrorMessage, FormState } from "@/lib/constants";
+import { ErrorMessage, SuccessMessage } from "@/lib/constants";
+import { CreatePost } from "@/lib/repositories/postRepo";
+import { GetUser } from "@/lib/repositories/userRepo";
 import { CreatePostFormSchema, CreatePostSchema } from "@/lib/validation/postSchema";
 import { revalidatePath } from "next/cache";
+import xss from "xss";
 
 export default async function ActionCreatePost(state: CreatePostFormSchema, formData: FormData) {
   const validatedData = CreatePostSchema.safeParse({
-    post: formData.get('post')
+    post: formData.get('post'),
+    username: formData.get('username')
   })
 
   if (!validatedData?.success) {
@@ -20,10 +24,23 @@ export default async function ActionCreatePost(state: CreatePostFormSchema, form
     return ErrorMessage("Invalid user")
   }
 
-  const { data } = validatedData;
+  const { post } = validatedData.data;
 
-  console.log(data);
+  const user = await GetUser(session.username);
+
+  if (session.username !== user?.userName) {
+    return ErrorMessage("You are not authorized to post as this user");
+  }
   
+  const sanitizedPost = xss(post);
 
+  const result = await CreatePost(user, sanitizedPost)
+
+  if (!result) {
+    return ErrorMessage("Failed to create post");
+  }
+  
   revalidatePath('/')
+
+  // return SuccessMessage("SUCCESS", "Post created!");
 }

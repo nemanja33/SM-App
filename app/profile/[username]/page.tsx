@@ -35,7 +35,7 @@ export default async function UserPage({
       <h1 className={styles.username}>{user?.userName}</h1>
       {
         isUserPage && (
-          <CreatePost />
+          <CreatePost userName={session?.username} />
         )
       }
       {

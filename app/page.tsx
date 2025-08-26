@@ -12,7 +12,7 @@ export default async function Home() {
     <div className="wrap">
       {session.isLoggedIn ? (
         <>
-          <CreatePost />
+          <CreatePost userName={session?.username} />
           {
             latestPosts.map(({ title, content, author }) => (
               <Post key={title} content={content} username={author.userName} />
