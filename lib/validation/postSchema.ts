@@ -3,6 +3,7 @@ import z from "zod";
 export const CreatePostSchema = z.object({
   post: z
     .string()
+    .min(1, { message: "Post is required" })
     .max(500, { message: "Post must be at max 500 characters long" })
     .trim(),
   username: z

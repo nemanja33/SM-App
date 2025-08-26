@@ -5,15 +5,15 @@ export default async function middleware(request: NextRequest): Promise<NextResp
 
     if (sessionCookie) return NextResponse.next();
 
-    if (request.nextUrl.pathname.startsWith('/sign-in') || 
-        request.nextUrl.pathname.startsWith('/sign-up') ||
+    if (request.nextUrl.pathname.startsWith('/login') || 
+        request.nextUrl.pathname.startsWith('/signup') ||
         request.nextUrl.pathname.startsWith('/_next')) {
         return NextResponse.next();
     }
 
 
     if (!sessionCookie) {
-        return NextResponse.redirect(new URL('/sign-in', request.url))
+        return NextResponse.redirect(new URL('/login', request.url))
     }
 
     return NextResponse.next();

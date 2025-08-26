@@ -23,9 +23,6 @@ export async function ActionSignIn(state: SignUpFormSchema, formData: FormData):
     return ErrorMessage("PASSWORD")
   }
 
-
-  // return SuccessMessage('SUCCESS', 'Signed in!')
-
   const session = await getIronSessionData();
   session.username = user.userName!;
   session.isLoggedIn = true;

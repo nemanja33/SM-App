@@ -3,10 +3,11 @@
 import GenericButton from '@/components/ui/button/button';
 import styles from './styles.module.css';
 import ActionCreatePost from './actions';
-import { useActionState } from 'react';
+import { useActionState, useEffect } from 'react';
 import FieldError from "../fieldError/fieldError";
 import { FormState } from '@/lib/constants';
 import InputField from '../input/input';
+import toast from 'react-hot-toast';
 
 const EMPTY_FORM_STATE: FormState = {
   status: 'UNSET' as const,
@@ -19,7 +20,15 @@ export default function CreatePost({
 }: {
   userName: string
 }) {
-  const [ state, action, pending ] = useActionState(ActionCreatePost, EMPTY_FORM_STATE)
+  const [ state, action, pending ] = useActionState(ActionCreatePost, EMPTY_FORM_STATE);
+
+  useEffect(() => {
+    if (state.status === 'ERROR' && !state.fieldErrors) {
+      toast.error(state.message)
+    } else if (state.message) {
+      toast.success(state.message)
+    }
+  }, [state])
 
   return (
     <form className={styles.form} action={action}>

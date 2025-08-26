@@ -8,7 +8,7 @@ export async function ActionSignOut(): Promise<void> {
   const session = await getIronSessionData();
 
   session.destroy()
-  redirect('/sign-in')
+  redirect('/login')
 }
 
 //revalidatePath(...) kada se doda novi item da bi se stranica opet generisala

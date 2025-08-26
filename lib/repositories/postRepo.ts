@@ -14,7 +14,7 @@ export async function GetPosts(amount: number = 2) {
 export async function CreatePost(author: User, text: string) {
   const post = await prisma.post.create({
     data: {
-      title: "title",
+      title: `${text.slice(0, 50)}-${Date.now()}`,
       content: text,
       author: { connect: { id: author.id } }
     }

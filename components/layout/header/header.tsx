@@ -22,10 +22,10 @@ export default async function Header() {
             </div>
           ) : (
             <>
-              <Link href="/sign-in" className={`${styles.authLink} ${styles.signInLink}`}>
-                Sign In
+              <Link href="/login" className={`${styles.authLink} ${styles.signInLink}`}>
+                Login
               </Link>
-              <Link href="/sign-up" className={`${styles.authLink} ${styles.signUpLink}`}>
+              <Link href="/signup" className={`${styles.authLink} ${styles.signUpLink}`}>
                 Sign Up
               </Link>
             </>

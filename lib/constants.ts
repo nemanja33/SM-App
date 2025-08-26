@@ -44,7 +44,7 @@ export function ErrorMessage(error: unknown) {
     default:
       return {
         status: 'ERROR' as const,
-        message: 'An unknown error occurred',
+        message: error as string,
         fieldErrors: {},
         timestamp: Date.now(),
       };

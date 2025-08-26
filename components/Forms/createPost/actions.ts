@@ -42,5 +42,5 @@ export default async function ActionCreatePost(state: CreatePostFormSchema, form
   
   revalidatePath('/')
 
-  // return SuccessMessage("SUCCESS", "Post created!");
+  return SuccessMessage("SUCCESS", "Post created!");
 }

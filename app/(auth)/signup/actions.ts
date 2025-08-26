@@ -16,11 +16,9 @@ export async function ActionSignUp(state: SignUpFormSchema, formData: FormData):
   if (!validatedData?.success) {
     return ErrorMessage(validatedData.error)
   }
-  // nesto ne radi kako treba sa test emailovima
 
   await CreateUser(validatedData.data)
   
-  // return SuccessMessage('SUCCESS', 'User created!')
   redirect('/sign-in')
 }
 

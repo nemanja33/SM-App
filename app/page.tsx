@@ -20,7 +20,7 @@ export default async function Home() {
           }
         </>
       ) : (
-        <p>Please sign in</p>
+        <p>Please login</p>
       )}
     </div>
   );
