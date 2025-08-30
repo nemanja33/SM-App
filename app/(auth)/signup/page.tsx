@@ -1,6 +1,6 @@
-import FormLoading from "@/components/forms/formLoading/formLoading";
 import { Suspense } from "react";
 import SignUpForm from "./form";
+import FormLoading from "@/components/Forms/FormLoading/FormLoading";
 
 export default function SignUp() {
   return (
@@ -9,5 +9,5 @@ export default function SignUp() {
         <SignUpForm />
       </Suspense>
     </div>
-  )
+  );
 }

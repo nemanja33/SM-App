@@ -1,30 +1,28 @@
 import { GetUser } from "@/lib/repositories/userRepo";
 import { getIronSessionData } from "@/lib/auth/session";
-import { notFound } from 'next/navigation'
+import { notFound } from "next/navigation";
 import Post from "@/components/ui/post/post";
-import CreatePost from "@/components/forms/createPost/createPost";
-import styles from './styles.module.css'
+import styles from "./styles.module.css";
+import CreatePost from "@/components/Forms/createPost/createPost";
 
 type UserPage = {
   params: Promise<{
-    username: string
-  }>
-}
+    username: string;
+  }>;
+};
 
 type Post = {
-  title: string,
-  content: string
-}
+  title: string;
+  content: string;
+};
 
-export default async function UserPage({
-  params
-}: UserPage) {
-  const { username } = await params
+export default async function UserPage({ params }: UserPage) {
+  const { username } = await params;
   const session = await getIronSessionData();
   const user = await GetUser(username);
 
   if (!user) {
-    notFound()
+    notFound();
   }
 
   const isUserPage = session.username === user?.userName;
@@ -33,16 +31,10 @@ export default async function UserPage({
   return (
     <div className="wrap">
       <h1 className={styles.username}>{user?.userName}</h1>
-      {
-        isUserPage && (
-          <CreatePost userName={session?.username} />
-        )
-      }
-      {
-        posts.map(({ title, content }: Post) => (
-          <Post key={title} content={content} username={user?.userName} />
-        ))
-      }
+      {isUserPage && <CreatePost userName={session?.username} />}
+      {posts.map(({ title, content }: Post) => (
+        <Post key={title} content={content} username={user?.userName} />
+      ))}
     </div>
-  )
+  );
 }

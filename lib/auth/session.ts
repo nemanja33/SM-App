@@ -9,8 +9,8 @@ interface ISessionData {
 export async function getIronSessionData() {
   const session = await getIronSession<ISessionData>(await cookies(), {
     password: process.env.SESSION_SECRET!,
-    cookieName: process.env.SESSION_COOKIE!
+    cookieName: process.env.SESSION_COOKIE!,
   });
 
-  return session
+  return session;
 }

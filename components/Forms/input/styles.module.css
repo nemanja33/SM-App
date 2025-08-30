@@ -1,80 +1,57 @@
 .fieldContainer {
-  margin-bottom: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1.5rem;
 }
 
 .label {
-  display: block;
-  font-weight: 600;
-  color: #14171a;
-  margin-bottom: 0.5rem;
-  font-size: 0.95rem;
+    display: block;
+    font-weight: 600;
+    color: var(--text-color);
+    margin-bottom: 0.5rem;
+    font-size: 0.95rem;
 }
 
 .input {
-  width: 100%;
-  padding: 0.875rem 1rem;
-  border: 2px solid #e1e8ed;
-  border-radius: 8px;
-  font-size: 1rem;
-  color: #14171a;
-  background-color: #ffffff;
-  transition: all 0.2s ease;
-  outline: none;
-  box-sizing: border-box;
-}
-
-.input:focus {
-  border-color: #1da1f2;
-  background-color: #f7f9fa;
-  box-shadow: 0 0 0 3px rgba(29, 161, 242, 0.1);
-}
-
-.input:hover {
-  border-color: #aab8c2;
+    width: 100%;
+    padding: 0.875rem 1rem;
+    border: 0;
+    border-radius: 8px;
+    font-size: 1rem;
+    color: var(--text-color);
+    background-color: var(--color-white);
+    transition: all var(--transition);
+    outline: none;
+    box-sizing: border-box;
 }
 
 .input::placeholder {
-  color: #657786;
-  opacity: 1;
+    color: var(--text-color);
+    opacity: 0.6;
 }
 
 .input:disabled {
-  background-color: #f7f9fa;
-  color: #657786;
-  cursor: not-allowed;
-  border-color: #e1e8ed;
+    background-color: var(--color-button-disabled);
+    cursor: not-allowed;
 }
 
 .input.error {
-  border-color: #e0245e;
-  background-color: #fdf2f8;
-}
-
-.input.error:focus {
-  border-color: #e0245e;
-  box-shadow: 0 0 0 3px rgba(224, 36, 94, 0.1);
+    border-color: var(--color-error);
 }
 
 .textarea {
-  width: 100%;
-  min-height: 80px;
-  border-radius: 8px;
-  border: none;
-  padding: 0.75rem;
-  font-size: 1.05rem;
-  background: #181c20;
-  color: #fff;
-  resize: vertical;
-  box-shadow: 0 1px 4px rgba(0,0,0,0.08);
-  transition: border 0.2s;
+    width: 95%;
+    min-height: 80px;
+    border-radius: 0.5rem;
+    border: none;
+    padding: 0.75rem;
+    font-size: 1rem;
+    background: var(--color-tertiary);
+    color: var(--text-color);
+    resize: vertical;
 }
 
 .textarea::placeholder {
-  color: #f1f2f3;
-  opacity: 1;
-}
-
-.textarea:focus {
-  outline: none;
-  border: 1.5px solid #1da1f2;
+    color: var(--text-color);
+    opacity: 1;
 }

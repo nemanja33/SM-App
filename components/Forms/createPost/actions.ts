@@ -1,27 +1,33 @@
-"use server"
+"use server";
 
 import { getIronSessionData } from "@/lib/auth/session";
 import { ErrorMessage, SuccessMessage } from "@/lib/constants";
 import { CreatePost } from "@/lib/repositories/postRepo";
 import { GetUser } from "@/lib/repositories/userRepo";
-import { CreatePostFormSchema, CreatePostSchema } from "@/lib/validation/postSchema";
+import {
+  CreatePostFormSchema,
+  CreatePostSchema,
+} from "@/lib/validation/postSchema";
 import { revalidatePath } from "next/cache";
 import xss from "xss";
 
-export default async function ActionCreatePost(state: CreatePostFormSchema, formData: FormData) {
+export default async function ActionCreatePost(
+  state: CreatePostFormSchema,
+  formData: FormData,
+) {
   const validatedData = CreatePostSchema.safeParse({
-    post: formData.get('post'),
-    username: formData.get('username')
-  })
+    post: formData.get("post"),
+    username: formData.get("username"),
+  });
 
   if (!validatedData?.success) {
-    return ErrorMessage(validatedData.error)
+    return ErrorMessage(validatedData.error);
   }
 
   const session = await getIronSessionData();
 
   if (!session.isLoggedIn) {
-    return ErrorMessage("Invalid user")
+    return ErrorMessage("Invalid user");
   }
 
   const { post } = validatedData.data;
@@ -31,16 +37,16 @@ export default async function ActionCreatePost(state: CreatePostFormSchema, form
   if (session.username !== user?.userName) {
     return ErrorMessage("You are not authorized to post as this user");
   }
-  
+
   const sanitizedPost = xss(post);
 
-  const result = await CreatePost(user, sanitizedPost)
+  const result = await CreatePost(user, sanitizedPost);
 
   if (!result) {
     return ErrorMessage("Failed to create post");
   }
-  
-  revalidatePath('/')
+
+  revalidatePath("/");
 
   return SuccessMessage("SUCCESS", "Post created!");
 }

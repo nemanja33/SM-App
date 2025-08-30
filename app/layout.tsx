@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Noto_Sans } from "next/font/google";
-import "./globals.css";
+import "@/styles/reset.css";
+import "@/styles/globals.css";
+import "@/styles/variables.css";
 import Header from "@/components/layout/header/header";
 import Toast from "@/components/ui/toast/toast";
 
@@ -23,9 +25,7 @@ export default function RootLayout({
       <body className={`${notoSans.className}`}>
         <Header />
         <Toast>
-          <main>
-          {children}
-          </main>
+          <main>{children}</main>
         </Toast>
       </body>
     </html>

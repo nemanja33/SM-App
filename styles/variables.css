@@ -1,0 +1,22 @@
+:root {
+    /* Colors */
+    --color-primary: #a65960;
+    --color-secondary: #60a659;
+    --color-tertiary: #5960a6;
+    --color-text: #000;
+    --color-white: #fff;
+
+    /* Buttons */
+    --color-button-bg: #59a69f;
+    --color-button-bg-hover: #254c4a;
+    --color-button-text: #fff;
+    --color-button-text-hover: #fff;
+    --color-button-disabled: #c4c4c4;
+    --button-border-radius: 25px;
+
+    /* Other */
+    --box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    --transition: 0.3s ease;
+    --transition-long: 0.6s ease;
+    --color-error: #dd2626;
+}

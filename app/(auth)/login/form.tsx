@@ -1,20 +1,23 @@
-"use client"
+"use client";
 
 import { useActionState } from "react";
 import GenericButton from "@/components/ui/button/button";
-import InputField from "@/components/forms/input/input";
-import FieldError from "@/components/forms/fieldError/fieldError";
 import { ActionSignIn } from "./actions";
 import { FormState } from "@/lib/constants";
+import InputField from "@/components/Forms/input/input";
+import FieldError from "@/components/Forms/FieldError/FieldError";
 
 const EMPTY_FORM_STATE: FormState = {
-  status: 'UNSET' as const,
-  message: '',
+  status: "UNSET" as const,
+  message: "",
   fieldErrors: {},
 };
 
 export default function SignInForm() {
-  const [state, action, pending] = useActionState(ActionSignIn, EMPTY_FORM_STATE);
+  const [state, action, pending] = useActionState(
+    ActionSignIn,
+    EMPTY_FORM_STATE,
+  );
 
   return (
     <div>
@@ -27,9 +30,11 @@ export default function SignInForm() {
           <InputField label="Password" type="password" placeholder="Password" />
           <FieldError formState={state} name="password" />
         </div>
-        <GenericButton label="Login" loading="Signing in..." disabled={pending} />
+        <GenericButton loading="Signing in..." disabled={pending}>
+          Sign in
+        </GenericButton>
         <p>{state?.message}</p>
       </form>
     </div>
-  )
+  );
 }

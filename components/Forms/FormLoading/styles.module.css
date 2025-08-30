@@ -1,64 +1,57 @@
 .skeletonField {
-  margin-bottom: 1.5rem;
+    margin-bottom: 1.5rem;
 }
 
 .skeletonLabel {
-  height: 16px;
-  width: 80px;
-  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
-  background-size: 200% 100%;
-  animation: shimmer 1.5s infinite;
-  border-radius: 4px;
-  margin-bottom: 0.5rem;
+    height: 16px;
+    width: 80px;
+    background: linear-gradient(
+        90deg,
+        var(--color-primary) 25%,
+        var(--color-secondary) 50%,
+        var(--color-primary) 75%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+    border-radius: 4px;
+    margin-bottom: 0.5rem;
 }
 
 .skeletonInput {
-  height: 50px;
-  width: 100%;
-  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
-  background-size: 200% 100%;
-  animation: shimmer 1.5s infinite;
-  border-radius: 8px;
-  border: 2px solid #e1e8ed;
-  box-sizing: border-box;
+    height: 50px;
+    width: 100%;
+    background: linear-gradient(
+        90deg,
+        var(--color-primary) 25%,
+        var(--color-secondary) 50%,
+        var(--color-primary) 75%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+    border-radius: 8px;
 }
 
 .skeletonButton {
-  height: 50px;
-  width: 100%;
-  max-width: 200px;
-  background: linear-gradient(90deg, #e6f3ff 25%, #cce7ff 50%, #e6f3ff 75%);
-  background-size: 200% 100%;
-  animation: shimmer 1.5s infinite;
-  border-radius: 25px;
-  margin: 1rem auto 0;
-  display: block;
+    height: 2rem;
+    width: 100%;
+    max-width: 200px;
+    background: linear-gradient(
+        90deg,
+        var(--color-primary) 25%,
+        var(--color-secondary) 50%,
+        var(--color-primary) 75%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+    border-radius: 25px;
+    margin: 1rem auto 0;
 }
 
 @keyframes shimmer {
-  0% {
-    background-position: -200% 0;
-  }
-  100% {
-    background-position: 200% 0;
-  }
-}
-
-.skeletonInput:focus {
-  border-color: #1da1f2;
-  box-shadow: 0 0 0 3px rgba(29, 161, 242, 0.1);
-}
-
-@media (max-width: 768px) {
-  .skeletonField {
-    margin-bottom: 1.25rem;
-  }
-  
-  .skeletonInput {
-    height: 45px;
-  }
-  
-  .skeletonButton {
-    height: 45px;
-  }
+    0% {
+        background-position: -200% 0;
+    }
+    100% {
+        background-position: 200% 0;
+    }
 }

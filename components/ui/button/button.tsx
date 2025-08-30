@@ -1,21 +1,22 @@
-import styles from './styles.module.css'
+import React from "react";
+import styles from "./styles.module.css";
 
 type SubmitButtonProps = {
-  label: string;
-  loading: React.ReactNode,
-  disabled: boolean
-  type?: 'button' | 'submit'
-}
+  children: string;
+  loading?: React.ReactNode;
+  disabled?: boolean;
+  type?: "button" | "submit";
+};
 
 export default function GenericButton({
-  label,
+  children,
   loading,
   disabled,
-  type='submit'
+  type = "submit",
 }: SubmitButtonProps) {
   return (
     <button disabled={disabled} type={type} className={styles.button}>
-      {disabled ? loading : label}
+      {disabled ? loading : children}
     </button>
   );
 }

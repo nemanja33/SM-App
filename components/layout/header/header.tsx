@@ -1,7 +1,8 @@
-import { getIronSessionData } from "@/lib/auth/session"
+import { getIronSessionData } from "@/lib/auth/session";
 import Link from "next/link";
 import styles from "./styles.module.css";
-import SignOut from "@/components/forms/signOut/signOut";
+import SignOut from "@/components/Forms/SignOut/SignOut";
+import GenericLink from "@/components/ui/link/link";
 
 export default async function Header() {
   const session = await getIronSessionData();
@@ -11,27 +12,25 @@ export default async function Header() {
       <Link href="/" className={styles.logo}>
         TwitterClone
       </Link>
-      
-      <nav className={styles.nav}>
-        {
-          session.isLoggedIn ? (
 
-            <div className={styles.userInfo}>
-              <Link className={styles.username} href={`/profile/${session.username.toLowerCase().replaceAll(' ', '')}`}>@{session.username}</Link>
-              <SignOut />
-            </div>
-          ) : (
-            <>
-              <Link href="/login" className={`${styles.authLink} ${styles.signInLink}`}>
-                Login
-              </Link>
-              <Link href="/signup" className={`${styles.authLink} ${styles.signUpLink}`}>
-                Sign Up
-              </Link>
-            </>
-          )
-        }
+      <nav className={styles.nav}>
+        {session.isLoggedIn ? (
+          <div className={styles.userInfo}>
+            <Link
+              className={styles.username}
+              href={`/profile/${session.username.toLowerCase().replaceAll(" ", "")}`}
+            >
+              @{session.username}
+            </Link>
+            <SignOut />
+          </div>
+        ) : (
+          <>
+            <GenericLink href="/login">Login</GenericLink>
+            <GenericLink href="/signup">Sign up</GenericLink>
+          </>
+        )}
       </nav>
     </header>
-  )
+  );
 }

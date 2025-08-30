@@ -1,4 +1,4 @@
-import styles from './styles.module.css';
+import styles from "./styles.module.css";
 
 export default function Layout({
   children,
@@ -19,7 +19,7 @@ export default function Layout({
           </ul>
         </div>
       </div>
-      
+
       <div className={styles.rightSide}>
         <div className={styles.formSection}>
           <h1 className={styles.formTitle}>Welcome</h1>
@@ -28,5 +28,5 @@ export default function Layout({
         </div>
       </div>
     </div>
-  )
+  );
 }
