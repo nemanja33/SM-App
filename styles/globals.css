@@ -23,3 +23,18 @@ button:focus-visible {
     outline: 2px dashed var(--color-text);
     outline-offset: 1px;
 }
+
+.error-message {
+    display: block;
+    color: var(--color-error);
+    font-size: 0.875rem;
+    font-weight: 500;
+    margin-top: 0.25rem;
+    margin-bottom: 0.5rem;
+    line-height: 1.4;
+}
+
+.error-message::before {
+    content: "⚠ ";
+    margin-right: 0.25rem;
+}

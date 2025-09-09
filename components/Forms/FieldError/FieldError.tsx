@@ -1,19 +1,18 @@
-import React from 'react'
-import styles from './styles.module.css'
-import { FormState } from '@/lib/constants';
+import React from "react";
+import { FormState } from "@/lib/constants";
 
 type FieldErrorPros = {
   formState: FormState | undefined;
   name: string;
-}
+};
 
-export default function FieldError({
-  formState,
-  name
-}: FieldErrorPros) {
+export default function FieldError({ formState, name }: FieldErrorPros) {
+  if (!formState || !formState.fieldErrors || !formState.fieldErrors[name]) {
+    return null;
+  }
   return (
-    <strong className={styles.errorMessage}>
+    <strong className="error-message">
       {formState?.fieldErrors[name]?.[0]}
     </strong>
-  )
+  );
 }

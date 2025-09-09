@@ -33,7 +33,7 @@ export default function SignInForm() {
         <GenericButton loading="Signing in..." disabled={pending}>
           Sign in
         </GenericButton>
-        <p>{state?.message}</p>
+        {state?.message && <p className="error-message">{state?.message}</p>}
       </form>
     </div>
   );
