@@ -24,6 +24,7 @@ export async function CreatePost(author: User, text: string) {
 }
 
 export async function DeletePost(id: number) {
+  await new Promise((res) => setTimeout(res, 1500));
   const post = await prisma.post.delete({
     where: { id },
   });

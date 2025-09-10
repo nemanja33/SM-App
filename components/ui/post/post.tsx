@@ -3,6 +3,7 @@ import styles from "./styles.module.css";
 import Link from "next/link";
 import PostActions from "@/components/layout/posts/postActions/postActions";
 import DeletePost from "@/components/layout/posts/deletePost/deletePost";
+import { getIronSessionData } from "@/lib/auth/session";
 
 interface IPost {
   content: string;
@@ -12,13 +13,14 @@ interface IPost {
   time?: string;
 }
 
-export default function Post({
+export default async function Post({
   content,
   username,
   avatarUrl,
   time = "just now",
   id,
 }: IPost) {
+  const session = await getIronSessionData();
   return (
     <>
       <article className={styles.article}>
@@ -37,10 +39,11 @@ export default function Post({
         <div className={styles.actions}>
           <PostActions />
         </div>
-        <div>
-          {/* limit to current user */}
-          <DeletePost id={id} />
-        </div>
+        {username === session?.username && (
+          <div>
+            <DeletePost id={id} username={username} />
+          </div>
+        )}
       </article>
     </>
   );

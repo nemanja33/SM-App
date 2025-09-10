@@ -13,9 +13,10 @@ const EMPTY_FORM_STATE: FormState = {
 
 interface IDeletePost {
   id: number;
+  username: string;
 }
 
-export default function DeletePost({ id }: IDeletePost) {
+export default function DeletePost({ id, username }: IDeletePost) {
   const [state, action, pending] = useActionState(
     ActionDeletePost,
     EMPTY_FORM_STATE,
@@ -31,6 +32,7 @@ export default function DeletePost({ id }: IDeletePost) {
 
   return (
     <form action={action} className={styles.delete}>
+      <input type="hidden" name="username" value={username} />
       <input type="hidden" name="post-id" value={id} />
       <button
         className={styles.button}

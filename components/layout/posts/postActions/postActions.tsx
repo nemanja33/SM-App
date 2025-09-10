@@ -16,12 +16,12 @@ export default function PostActions() {
 
   return (
     <>
+      <IconButton icon="heart" label="Like post" handleClick={likePost} />
       <IconButton
         icon="comment"
         label="Leave a comment"
         handleClick={postComment}
       />
-      <IconButton icon="heart" label="Like post" handleClick={likePost} />
       <IconButton
         icon="arrow-up-right-from-square"
         label="Share post"

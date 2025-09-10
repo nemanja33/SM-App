@@ -5,9 +5,9 @@ import styles from "./styles.module.css";
 import { useActionState, useEffect } from "react";
 import { FormState } from "@/lib/constants";
 import toast from "react-hot-toast";
-import FieldError from "../fieldError/fieldError";
 import InputField from "../input/input";
 import ActionCreatePost from "./actions";
+import FieldError from "../fieldError/fieldError";
 
 const EMPTY_FORM_STATE: FormState = {
   status: "UNSET" as const,

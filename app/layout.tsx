@@ -10,10 +10,10 @@ const notoSans = Noto_Sans({
   subsets: ["latin"],
 });
 
-// export const metadata: Metadata = {
-//   title: "SM app",
-//   description: "A SM app",
-// };
+export const metadata: Metadata = {
+  title: "SM app",
+  description: "A SM app",
+};
 
 export default function RootLayout({
   children,
