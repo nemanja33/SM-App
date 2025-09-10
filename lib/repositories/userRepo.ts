@@ -15,11 +15,9 @@ export const SignInUser = cache(async function SignInUser(
     where: { email: data.email },
   });
 
-  if (!user) {
-    throw new Error("User not found!");
+  if (user) {
+    return user;
   }
-
-  return user;
 });
 
 export async function CreateUser(

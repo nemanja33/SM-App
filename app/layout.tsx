@@ -11,8 +11,8 @@ const notoSans = Noto_Sans({
 });
 
 // export const metadata: Metadata = {
-//   title: "Twitter Clone",
-//   description: "My Twitter Clone APp",
+//   title: "SM app",
+//   description: "A SM app",
 // };
 
 export default function RootLayout({
