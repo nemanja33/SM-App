@@ -46,8 +46,8 @@
     border: none;
     padding: 0.75rem;
     font-size: 1rem;
-    background: var(--color-tertiary);
-    color: var(--text-color);
+    background: var(--color-secondary);
+    color: var(--color-text);
     resize: vertical;
 }
 

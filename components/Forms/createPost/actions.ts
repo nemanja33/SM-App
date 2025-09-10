@@ -4,15 +4,12 @@ import { getIronSessionData } from "@/lib/auth/session";
 import { ErrorMessage, SuccessMessage } from "@/lib/constants";
 import { CreatePost } from "@/lib/repositories/postRepo";
 import { GetUser } from "@/lib/repositories/userRepo";
-import {
-  CreatePostFormSchema,
-  CreatePostSchema,
-} from "@/lib/validation/postSchema";
+import { PostSchema, CreatePostSchema } from "@/lib/validation/postSchema";
 import { revalidatePath } from "next/cache";
 import xss from "xss";
 
 export default async function ActionCreatePost(
-  state: CreatePostFormSchema,
+  state: PostSchema,
   formData: FormData,
 ) {
   const validatedData = CreatePostSchema.safeParse({

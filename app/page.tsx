@@ -1,7 +1,7 @@
 import { GetPosts } from "@/lib/repositories/postRepo";
 import { getIronSessionData } from "@/lib/auth/session";
 import Post from "@/components/ui/post/post";
-import CreatePost from "@/components/Forms/createPost/createPost";
+import CreatePost from "@/components/forms/createPost/createPost";
 
 export default async function Home() {
   const session = await getIronSessionData();
@@ -13,8 +13,13 @@ export default async function Home() {
       {session.isLoggedIn ? (
         <>
           <CreatePost userName={session?.username} />
-          {latestPosts.map(({ title, content, author }) => (
-            <Post key={title} content={content} username={author.userName} />
+          {latestPosts.map(({ title, content, author, id }) => (
+            <Post
+              key={title}
+              content={content}
+              username={author.userName}
+              id={id}
+            />
           ))}
         </>
       ) : (

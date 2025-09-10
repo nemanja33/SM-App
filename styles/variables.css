@@ -1,9 +1,9 @@
 :root {
     /* Colors */
-    --color-primary: #a65960;
-    --color-secondary: #60a659;
-    --color-tertiary: #5960a6;
-    --color-text: #000;
+    --color-primary: #333;
+    --color-secondary: #4a5051;
+    --color-tertiary: #1aa0b7;
+    --color-text: #fff;
     --color-white: #fff;
 
     /* Buttons */

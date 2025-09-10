@@ -2,12 +2,12 @@
 
 import GenericButton from "@/components/ui/button/button";
 import styles from "./styles.module.css";
-import ActionCreatePost from "./actions";
 import { useActionState, useEffect } from "react";
 import { FormState } from "@/lib/constants";
-import InputField from "../input/input";
 import toast from "react-hot-toast";
-import FieldError from "../FieldError/FieldError";
+import FieldError from "../fieldError/fieldError";
+import InputField from "../input/input";
+import ActionCreatePost from "./actions";
 
 const EMPTY_FORM_STATE: FormState = {
   status: "UNSET" as const,

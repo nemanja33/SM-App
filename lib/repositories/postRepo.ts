@@ -3,12 +3,12 @@ import prisma from "../prisma";
 
 export async function GetPosts(amount: number = 2) {
   const posts = await prisma.post.findMany({
-    orderBy: { createdAt: 'desc' },
+    orderBy: { createdAt: "desc" },
     take: amount,
-    include: { author: true }
+    include: { author: true },
   });
 
-  return posts
+  return posts;
 }
 
 export async function CreatePost(author: User, text: string) {
@@ -16,9 +16,17 @@ export async function CreatePost(author: User, text: string) {
     data: {
       title: `${text.slice(0, 50)}-${Date.now()}`,
       content: text,
-      author: { connect: { id: author.id } }
-    }
+      author: { connect: { id: author.id } },
+    },
   });
 
-  return post
+  return post;
+}
+
+export async function DeletePost(id: number) {
+  const post = await prisma.post.delete({
+    where: { id },
+  });
+
+  return post;
 }
