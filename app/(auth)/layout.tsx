@@ -10,7 +10,7 @@ export default function Layout({
       <div className={styles.leftSide}>
         <div className={styles.brandSection}>
           <div className={styles.logo}>SM App</div>
-          <div className={styles.tagline}>Connect with the world</div>
+          <div className={styles.tagline}>Connect with the world!</div>
           <ul className={styles.features}>
             <li>Share your thoughts instantly</li>
             <li>Follow interesting people</li>
