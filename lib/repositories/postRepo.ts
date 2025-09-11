@@ -1,7 +1,7 @@
-import { User } from "../generated/prisma-client";
+import { Post, User } from "../generated/prisma-client";
 import prisma from "../prisma";
 
-export async function GetPosts(amount: number = 2) {
+export async function GetPosts(amount: number = 2): Promise<Post[]> {
   const posts = await prisma.post.findMany({
     orderBy: { createdAt: "desc" },
     take: amount,
@@ -11,7 +11,7 @@ export async function GetPosts(amount: number = 2) {
   return posts;
 }
 
-export async function CreatePost(author: User, text: string) {
+export async function CreatePost(author: User, text: string): Promise<Post> {
   const post = await prisma.post.create({
     data: {
       title: `${text.slice(0, 50)}-${Date.now()}`,
@@ -23,7 +23,7 @@ export async function CreatePost(author: User, text: string) {
   return post;
 }
 
-export async function DeletePost(id: number) {
+export async function DeletePost(id: number): Promise<Post> {
   await new Promise((res) => setTimeout(res, 500));
   const post = await prisma.post.delete({
     where: { id },
