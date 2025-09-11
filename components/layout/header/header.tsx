@@ -2,7 +2,7 @@ import { getIronSessionData } from "@/lib/auth/session";
 import Link from "next/link";
 import styles from "./styles.module.css";
 import GenericLink from "@/components/ui/link/link";
-import SignOut from "@/components/forms/signOut/SignOut";
+import SignOut from "@/components/forms/signOut/signOut";
 
 export default async function Header() {
   const session = await getIronSessionData();

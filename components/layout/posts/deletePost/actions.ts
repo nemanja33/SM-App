@@ -26,7 +26,7 @@ export async function ActionDeletePost(
   if (!deletedPost) {
     return ErrorMessage("Error deleting post!");
   }
-  revalidatePath("/");
+  // revalidatePath("/");
 
   return SuccessMessage("SUCCESS", "Post deleted!");
 }

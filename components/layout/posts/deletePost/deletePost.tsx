@@ -1,9 +1,10 @@
 "use client";
 import styles from "./styles.module.css";
-import { useActionState, useEffect } from "react";
+import { useActionState, useCallback, useEffect } from "react";
 import { ActionDeletePost } from "./actions";
 import { FormState } from "@/lib/constants";
 import toast from "react-hot-toast";
+import { useRouter } from "next/navigation";
 
 const EMPTY_FORM_STATE: FormState = {
   status: "UNSET" as const,
@@ -17,10 +18,15 @@ interface IDeletePost {
 }
 
 export default function DeletePost({ id, username }: IDeletePost) {
+  const router = useRouter();
   const [state, action, pending] = useActionState(
     ActionDeletePost,
     EMPTY_FORM_STATE,
   );
+
+  const onSuccess = useCallback(() => {
+    router.refresh();
+  }, [router]);
 
   useEffect(() => {
     if (state.status === "ERROR" && !state.fieldErrors) {
@@ -28,7 +34,9 @@ export default function DeletePost({ id, username }: IDeletePost) {
     } else if (state.message) {
       toast.success(state.message);
     }
-  }, [state]);
+
+    onSuccess?.();
+  }, [state, onSuccess]);
 
   return (
     <form action={action} className={styles.delete}>
