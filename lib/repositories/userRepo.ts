@@ -36,7 +36,14 @@ export const GetUser = cache(async function GetUser(userName: string) {
         mode: "insensitive",
       },
     },
-    include: { posts: { orderBy: { createdAt: "desc" } } },
+    include: {
+      posts: {
+        orderBy: { createdAt: "desc" },
+        include: {
+          likes: true,
+        },
+      },
+    },
   });
 
   return user;

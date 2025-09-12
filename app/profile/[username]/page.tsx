@@ -22,13 +22,18 @@ export default async function UserPage({ params }: UserPage) {
 
   const isUserPage = session.username === user?.userName;
   const posts = user ? user.posts : [];
-
   return (
     <div className="wrap">
       <h1 className={styles.username}>{user?.userName}</h1>
       {isUserPage && <CreatePost userName={session?.username} />}
-      {posts.map(({ title, content, id }) => (
-        <Post key={title} content={content} username={user?.userName} id={id} />
+      {posts.map(({ title, content, id, likes }) => (
+        <Post
+          key={title}
+          content={content}
+          username={user?.userName}
+          id={id}
+          likes={likes}
+        />
       ))}
     </div>
   );

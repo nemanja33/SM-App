@@ -4,12 +4,14 @@ import Link from "next/link";
 import PostActions from "@/components/layout/posts/postActions/postActions";
 import DeletePost from "@/components/layout/posts/deletePost/deletePost";
 import { getIronSessionData } from "@/lib/auth/session";
+import { Like } from "@/lib/generated/prisma-client";
 
 interface IPost {
   content: string;
   username: string;
   avatarUrl?: string;
   id: number;
+  likes: Like[];
   time?: string;
 }
 
@@ -19,6 +21,7 @@ export default async function Post({
   avatarUrl,
   time = "just now",
   id,
+  likes,
 }: IPost) {
   const session = await getIronSessionData();
   return (
@@ -37,7 +40,7 @@ export default async function Post({
         </div>
         <div className={styles.content}>{content}</div>
         <div className={styles.actions}>
-          <PostActions />
+          <PostActions postId={id} likeCount={likes.length} />
         </div>
         {username === session?.username && (
           <div>

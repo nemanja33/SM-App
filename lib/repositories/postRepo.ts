@@ -5,7 +5,7 @@ export async function GetPosts(amount: number = 2): Promise<Post[]> {
   const posts = await prisma.post.findMany({
     orderBy: { createdAt: "desc" },
     take: amount,
-    include: { author: true },
+    include: { author: true, likes: true },
   });
 
   return posts;

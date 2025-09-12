@@ -6,6 +6,12 @@ export type FormState = {
   fieldErrors: Record<string, string[] | undefined>;
 };
 
+export const EmptyFormState: FormState = {
+  status: "UNSET" as const,
+  message: "",
+  fieldErrors: {},
+};
+
 export function SuccessMessage(
   status: FormState["status"],
   message: string,

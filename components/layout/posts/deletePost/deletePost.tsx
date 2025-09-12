@@ -2,15 +2,9 @@
 import styles from "./styles.module.css";
 import { useActionState, useCallback, useEffect } from "react";
 import { ActionDeletePost } from "./actions";
-import { FormState } from "@/lib/constants";
+import { EmptyFormState } from "@/lib/constants";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
-
-const EMPTY_FORM_STATE: FormState = {
-  status: "UNSET" as const,
-  message: "",
-  fieldErrors: {},
-};
 
 interface IDeletePost {
   id: number;
@@ -21,7 +15,7 @@ export default function DeletePost({ id, username }: IDeletePost) {
   const router = useRouter();
   const [state, action, pending] = useActionState(
     ActionDeletePost,
-    EMPTY_FORM_STATE,
+    EmptyFormState,
   );
 
   const onSuccess = useCallback(() => {

@@ -17,3 +17,16 @@
 .button:hover i::before {
     color: var(--color-tertiary);
 }
+
+.active {
+    color: var(--color-tertiary);
+    animation: scale 0.3s cubic-bezier(0.39, 0.575, 0.565, 1);
+}
+@keyframes scale {
+    from {
+        transform: scale(1);
+    }
+    to {
+        transform: scale(1.5);
+    }
+}

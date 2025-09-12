@@ -2,22 +2,13 @@
 
 import { useActionState } from "react";
 import GenericButton from "@/components/ui/button/button";
-import { FormState } from "@/lib/constants";
+import { EmptyFormState } from "@/lib/constants";
 import { ActionSignUp } from "./actions";
-import InputField from "@/components/Forms/input/input";
-import FieldError from "@/components/Forms/FieldError/FieldError";
-
-const EMPTY_FORM_STATE: FormState = {
-  status: "UNSET" as const,
-  message: "",
-  fieldErrors: {},
-};
+import InputField from "@/components/forms/input/input";
+import FieldError from "@/components/forms/fieldError/fieldError";
 
 export default function SignUpForm() {
-  const [state, action, pending] = useActionState(
-    ActionSignUp,
-    EMPTY_FORM_STATE,
-  );
+  const [state, action, pending] = useActionState(ActionSignUp, EmptyFormState);
 
   return (
     <div>

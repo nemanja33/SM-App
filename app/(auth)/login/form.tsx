@@ -3,21 +3,12 @@
 import { useActionState } from "react";
 import GenericButton from "@/components/ui/button/button";
 import { ActionSignIn } from "./actions";
-import { FormState } from "@/lib/constants";
+import { EmptyFormState } from "@/lib/constants";
 import InputField from "@/components/forms/input/input";
 import FieldError from "@/components/forms/fieldError/fieldError";
 
-const EMPTY_FORM_STATE: FormState = {
-  status: "UNSET" as const,
-  message: "",
-  fieldErrors: {},
-};
-
 export default function SignInForm() {
-  const [state, action, pending] = useActionState(
-    ActionSignIn,
-    EMPTY_FORM_STATE,
-  );
+  const [state, action, pending] = useActionState(ActionSignIn, EmptyFormState);
 
   return (
     <div>
